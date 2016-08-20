@@ -6,6 +6,8 @@ SimpleCov.start do
   minimum_coverage 100
 end
 
+require_relative '../src/xp_team_wise'
+
 RSpec.configure do |config|
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
