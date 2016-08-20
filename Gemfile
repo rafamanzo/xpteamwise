@@ -11,4 +11,7 @@ end
 group :test do
   # Test coverage report
   gem 'simplecov', :require => false
+
+  # Test object factories
+  gem 'factory_girl'
 end

@@ -6,6 +6,8 @@ SimpleCov.start do
   minimum_coverage 100
 end
 
+require 'support/factory_girl'
+
 require_relative '../src/xp_team_wise'
 
 RSpec.configure do |config|
