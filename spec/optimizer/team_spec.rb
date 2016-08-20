@@ -5,7 +5,7 @@ describe XpTeamWise::Optimizer::Team do
   let(:project) { FactoryGirl.build(:project) }
   let(:member) { FactoryGirl.build(:member, projects: [project]) }
   let(:coach) { FactoryGirl.build(:member, :coach, projects: [project]) }
-  subject { described_class.new(project, [member, coach]) }
+  subject { described_class.new(project: project, members: [member, coach]) }
 
   describe 'attribute' do
     include_examples 'has attribute', 'project'
