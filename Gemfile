@@ -7,3 +7,8 @@ group :development, :test do
   # Unit testing
   gem 'rspec'
 end
+
+group :test do
+  # Test coverage report
+  gem 'simplecov', :require => false
+end
