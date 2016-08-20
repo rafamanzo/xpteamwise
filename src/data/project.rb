@@ -6,6 +6,10 @@ module XpTeamWise
       def initialize(name: '')
         @name = name
       end
+
+      def ==(other)
+        self.name == other.name
+      end
     end
   end
 end
