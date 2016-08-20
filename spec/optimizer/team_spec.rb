@@ -14,8 +14,12 @@ describe XpTeamWise::Optimizer::Team do
 
   describe 'method' do
     describe 'to_s' do
+      before do
+        expect(XpTeamWise::Optimizer::Ranker).to receive(:score_team).and_return(42)
+      end
+
       it 'is expected to print the team information into a string' do
-        expectation = "#{project.name}\n\t- #{member.name}\n\t* #{coach.name}"
+        expectation = "#{project.name} (score: 42)\n\t- #{member.name} (1)\n\t* #{coach.name} (1)"
 
         expect(subject.to_s).to eq(expectation)
       end

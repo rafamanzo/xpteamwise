@@ -17,12 +17,12 @@ module XpTeamWise
               teams = chromossome.teams
               chromossome.score = 0
 
-              teams.each { |team| chromossome.score += score_team(team, MIN_SIZE, MAX_SIZE) }
+              teams.each { |team| chromossome.score += score_team(team) }
             end
           end
         end
 
-        def score_team(team, min_size, max_size)
+        def score_team(team, min_size=MIN_SIZE, max_size=MAX_SIZE)
           score = 0
 
           team.members.each do |member|

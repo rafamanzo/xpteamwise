@@ -9,12 +9,13 @@ module XpTeamWise
       end
 
       def to_s
-        str = "#{project.name}"
+        str = "#{project.name} (score: #{Ranker::score_team(self)})"
 
         members.each do |member|
           str << "\n\t"
           str << (member.coach ? "* " : "- ")
           str << member.name
+          str << " (#{(member.projects.find_index(project) + 1)})"
         end
 
         str

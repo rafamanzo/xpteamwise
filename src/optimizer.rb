@@ -5,5 +5,9 @@ require_relative 'optimizer/ranker'
 
 module XpTeamWise
   module Optimizer
+    class << self
+      def run(iterations)
+      end
+    end
   end
 end
