@@ -5,11 +5,15 @@ module XpTeamWise
 
       def initialize(size: 0, members: [])
         @chromossomes = []
-        (0..size).each { |_| @chromossomes << Chromossome.new(members) }
+        (1..size).each { |_| @chromossomes << Chromossome.new(members) }
       end
 
       def fittest
         self.chromossomes.first
+      end
+
+      def sort
+        self.chromossomes.sort! { |one, another| another.score <=> one.score }
       end
     end
   end
