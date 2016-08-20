@@ -6,7 +6,18 @@ require_relative 'optimizer/ranker'
 module XpTeamWise
   module Optimizer
     class << self
-      def run(iterations)
+      def run(population)
+        all_bonus = false
+
+        population.fittest
+        begin
+          fittest = population.fittest
+
+          all_bonus = true
+          fittest.teams.each do |team|
+            all_bonus = all_bonus && team.has_coach? && team.respect_sizes?(Ranker::MIN_SIZE, Ranker::MAX_SIZE)
+          end
+        end while !all_bonus
       end
     end
   end
