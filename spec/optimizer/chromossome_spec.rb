@@ -29,4 +29,12 @@ describe XpTeamWise::Optimizer::Chromossome do
       described_class.new(members)
     end
   end
+
+  describe 'method' do
+    describe 'teams' do
+      it 'is expected to be a team list' do
+        expect(subject.teams).to all be_a XpTeamWise::Optimizer::Team
+      end
+    end
+  end
 end
