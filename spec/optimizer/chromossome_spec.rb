@@ -22,6 +22,7 @@ describe XpTeamWise::Optimizer::Chromossome do
   describe 'attribute' do
     include_examples 'has attribute', 'genes'
     include_examples 'has attribute', 'score'
+    include_examples 'has attribute', 'members'
 
     describe 'score' do
       it 'is expected to be nil initialized' do
