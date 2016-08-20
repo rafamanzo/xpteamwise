@@ -19,6 +19,11 @@ module XpTeamWise
 
         str
       end
+
+      def has_coach?
+        self.members.each { |member| return true if member.coach }
+        false
+      end
     end
   end
 end
