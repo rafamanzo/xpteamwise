@@ -9,6 +9,7 @@ module XpTeamWise
       end
 
       def fittest
+        self.sort
         self.chromossomes.first
       end
 

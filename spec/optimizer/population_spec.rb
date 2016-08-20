@@ -18,6 +18,7 @@ describe XpTeamWise::Optimizer::Population do
   describe 'method' do
     describe 'fittest' do
       it 'is expected to return a Chromossome' do
+        expect(subject).to receive(:sort)
         expect(subject.fittest).to be_a(XpTeamWise::Optimizer::Chromossome)
       end
     end
