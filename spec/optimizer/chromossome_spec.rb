@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'support/shared_examples_for_attributes'
 
 describe XpTeamWise::Optimizer::Chromossome do
   let(:project1) { FactoryGirl.build(:project) }
@@ -17,6 +18,10 @@ describe XpTeamWise::Optimizer::Chromossome do
   let(:members) { [coach1, coach2, coach3, member1, member2, member3] }
 
   subject { described_class.new(members) }
+
+  describe 'attribute' do
+    include_examples 'has attribute', 'genes'
+  end
 
   describe 'initialize' do
     # Not close to a good test, but ensure no runtime errors
