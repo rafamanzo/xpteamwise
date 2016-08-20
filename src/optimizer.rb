@@ -12,6 +12,8 @@ module XpTeamWise
 
         population.fittest
         begin
+          CrossOver.apply(population)
+
           fittest = population.fittest
 
           all_bonus = true
