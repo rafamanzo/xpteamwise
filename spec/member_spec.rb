@@ -6,5 +6,6 @@ describe XpTeamWise::Member do
     include_examples 'has attribute', 'name'
     include_examples 'has attribute', 'email'
     include_examples 'has attribute', 'coach'
+    include_examples 'has attribute', 'projects'
   end
 end
