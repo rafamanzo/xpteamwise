@@ -3,6 +3,7 @@ require_relative 'optimizer/chromossome'
 require_relative 'optimizer/population'
 require_relative 'optimizer/ranker'
 require_relative 'optimizer/cross_over'
+require_relative 'optimizer/mutator'
 
 module XpTeamWise
   module Optimizer
@@ -13,8 +14,10 @@ module XpTeamWise
         population.fittest
         begin
           CrossOver.apply(population)
+          Mutator.apply(population)
 
           fittest = population.fittest
+          puts "Fittest score: #{fittest.score}"
 
           all_bonus = true
           fittest.teams.each do |team|
