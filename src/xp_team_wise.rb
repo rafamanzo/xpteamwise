@@ -1,4 +1,3 @@
-require_relative 'project'
-require_relative 'member'
+require_relative 'data'
 
 module XpTeamWise; end
