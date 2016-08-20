@@ -17,6 +17,8 @@ namespace :xpteamwise do
     population = XpTeamWise::Optimizer::Population.new(size: 16, members: members)
 
     File.open(task.name, 'w') do |file|
+      file.puts "General satisfaction (score): #{population.fittest.score}\n\n"
+
       population.fittest.teams.each { |team| file.puts team.to_s }
     end
   end
