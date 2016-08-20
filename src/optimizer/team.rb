@@ -24,6 +24,10 @@ module XpTeamWise
         self.members.each { |member| return true if member.coach }
         false
       end
+
+      def respect_sizes?(min, max)
+        self.members.count <= max && self.members.count >= min
+      end
     end
   end
 end

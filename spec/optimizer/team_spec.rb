@@ -22,19 +22,34 @@ describe XpTeamWise::Optimizer::Team do
     end
 
     describe 'has_coach?' do
-      context 'when the it has a coach' do
+      context 'when it has a coach' do
         it 'is expected to return true' do
           expect(subject.has_coach?).to be_truthy
         end
       end
 
-      context 'when the it has no coach' do
+      context 'when it has no coach' do
         before do
           subject.members.delete(coach)
         end
 
         it 'is expected to return falsey' do
           expect(subject.has_coach?).to be_falsey
+        end
+      end
+    end
+
+    describe 'respect_sizes?' do
+      context 'when it is of a proper size' do
+        it 'is expected to return true' do
+          expect(subject.respect_sizes?(0,2)).to be_truthy
+          expect(subject.respect_sizes?(2,4)).to be_truthy
+        end
+      end
+
+      context 'when it is not of a proper size' do
+        it 'is expected to return true' do
+          expect(subject.respect_sizes?(3,4)).to be_falsey
         end
       end
     end
