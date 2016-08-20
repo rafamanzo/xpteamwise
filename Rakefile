@@ -14,9 +14,10 @@ namespace :xpteamwise do
 
   rule '.txt' => '.csv' do |task|
     members = XpTeamWise::Data::Reader::CSVToData.read(task.source)
+    population = XpTeamWise::Optimizer::Population.new(size: 16, members: members)
 
     File.open(task.name, 'w') do |file|
-      members.each { |m| file.puts m.name }
+      population.fittest.teams.each { |team| file.puts team.to_s }
     end
   end
 end
