@@ -3,7 +3,7 @@ module XpTeamWise
     class Team
       attr_reader :project, :members
 
-      def initialize(project, members)
+      def initialize(project: nil, members: [])
         @project = project
         @members = members
       end

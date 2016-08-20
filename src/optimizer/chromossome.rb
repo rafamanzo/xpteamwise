@@ -20,7 +20,7 @@ module XpTeamWise
           projects[@members[index].projects[@genes[index]].name][:members] << @members[index]
         end
 
-        projects.map { |name, attributes| Team.new(*attributes) }
+        projects.map { |name, attributes| Team.new(**attributes) }
       end
     end
   end
