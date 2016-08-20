@@ -2,6 +2,7 @@ module XpTeamWise
   module Optimizer
     class Chromossome
       attr_reader :genes
+      attr_accessor :score
 
       def initialize(members=[])
         @members = members

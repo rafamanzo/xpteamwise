@@ -21,6 +21,18 @@ describe XpTeamWise::Optimizer::Chromossome do
 
   describe 'attribute' do
     include_examples 'has attribute', 'genes'
+    include_examples 'has attribute', 'score'
+
+    describe 'score' do
+      it 'is expected to be nil initialized' do
+        expect(subject.score).to be_nil
+      end
+
+      it 'is expected to be writable' do
+        subject.score = 10
+        expect(subject.score).to eq(10)
+      end
+    end
   end
 
   describe 'initialize' do
