@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe XpTeamWise::Optimizer::Mutator do
-  let(:size) { 4 }
+  let(:size) { 30 }
   let(:population) { XpTeamWise::Optimizer::Population.new(size: size, members: FactoryGirl.build_list(:member, size)) }
 
   before do
