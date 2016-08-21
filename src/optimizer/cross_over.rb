@@ -1,6 +1,8 @@
 module XpTeamWise
   module Optimizer
     class CrossOver
+      RATIO=0.1
+
       class << self
         def apply(population)
           breeders = population.chromossomes.take(population.chromossomes.count/2)
@@ -21,12 +23,24 @@ module XpTeamWise
           child2 = Chromossome.new(parent2.members)
           child2.genes.clear
 
-          cross_over_position = rand(parent1.genes.count)
+          cross_over_positions = []
+          (1..(RATIO*parent1.genes.count).round).each { |_| cross_over_positions << rand(parent1.genes.count - 1) }
+          cross_over_positions.sort! << -1
 
-          child1.genes.concat(parent1.genes[0..cross_over_position])
-          child1.genes.concat(parent2.genes[(cross_over_position + 1)..-1])
-          child2.genes.concat(parent2.genes[0..cross_over_position])
-          child2.genes.concat(parent1.genes[(cross_over_position + 1)..-1])
+          flip = false
+          start = 0
+          cross_over_positions.each do |cross_over_position|
+            if(flip)
+              child1.genes.concat(parent2.genes[start..cross_over_position])
+              child2.genes.concat(parent1.genes[start..cross_over_position])
+            else
+              child1.genes.concat(parent1.genes[start..cross_over_position])
+              child2.genes.concat(parent2.genes[start..cross_over_position])
+            end
+
+            flip = !flip
+            start = cross_over_position + 1
+          end
 
           return child1, child2
         end

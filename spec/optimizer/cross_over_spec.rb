@@ -3,7 +3,7 @@ require 'spec_helper'
 describe XpTeamWise::Optimizer::CrossOver do
   describe 'class method' do
     describe 'apply' do
-      let(:population) { XpTeamWise::Optimizer::Population.new(size: 4, members: FactoryGirl.build_list(:member, 4)) }
+      let(:population) { XpTeamWise::Optimizer::Population.new(size: 4, members: FactoryGirl.build_list(:member, 30)) }
 
       before do
         population.chromossomes.each { |chromossome| chromossome.score = 1 }
