@@ -52,7 +52,7 @@ The chromosome score is given by the teams score sum.
 ## Setup
 
 ```shell
-bundle install --without development,test
+bundle install --without development test
 ```
 
 ## Input format
