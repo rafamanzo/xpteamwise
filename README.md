@@ -35,8 +35,14 @@ The chromosome score is given by the teams score sum.
 
 ## What is still missing
 
+* [ ] Acceptance tests
+* [ ] Travis build
+* [ ] Static code analysis
+* [ ] Tweak algorithm constants in order to provide better results
+  - [ ] Extract those constants into YAML configuration file
 * [ ] Input personal abilities data
-  -  [ ] Use this data to form equilibrate teams
+  - [ ] Use this data to form equilibrate teams
+* [ ] Allow the user to configure
 
 ## Requirements
 
