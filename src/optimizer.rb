@@ -10,6 +10,8 @@ module XpTeamWise
     class << self
       def run(population)
         all_bonus = false
+        continue = true
+        iterations = 0
 
         population.fittest
         begin
@@ -17,21 +19,27 @@ module XpTeamWise
           Mutator.apply(population)
 
           fittest = population.fittest
-          puts "Fittest score: #{fittest.score}"
 
           all_bonus = true
           fittest.teams.each do |team|
-            unless team.has_coach?
-              all_bonus = false
-              puts "Could not find coach for #{team.project.name}"
-            end
-
-            unless team.respect_sizes?(Ranker::MIN_SIZE, Ranker::MAX_SIZE)
-              all_bonus = false
-              puts "Could not find proper size for #{team.project.name}"
-            end
+            all_bonus = all_bonus && team.has_coach? && team.respect_sizes?(Ranker::MIN_SIZE, Ranker::MAX_SIZE)
           end
-        end while !all_bonus
+
+          # This will not get tracked for coverage as the tests are not expected to iterate that much
+          # :nocov:
+          if iterations == 1000
+            puts "\nIterated 1000 times!"
+            puts "Fittest score: #{fittest.score}"
+            fittest.teams.each do |team|
+              puts "Could not find coach for #{team.project.name}" unless team.has_coach?
+              puts "Could not find proper size for #{team.project.name}" unless team.respect_sizes?(Ranker::MIN_SIZE, Ranker::MAX_SIZE)
+            end
+            iterations = 0
+          end
+          # :nocov:
+
+          iterations += 1
+        end while !all_bonus && continue
       end
     end
   end
