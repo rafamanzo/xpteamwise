@@ -15,6 +15,7 @@ namespace :xpteamwise do
   rule '.txt' => '.csv' do |task|
     members = XpTeamWise::Data::Reader::CSVToData.read(task.source)
     population = XpTeamWise::Optimizer::Population.new(size: 16, members: members)
+    XpTeamWise::Optimizer.run(population)
 
     File.open(task.name, 'w') do |file|
       file.puts "General satisfaction (score): #{population.fittest.score}\n\n"
