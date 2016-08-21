@@ -18,7 +18,25 @@ I've decided to write this:
 
 It may also address other minor concerns such as team formation manipulation as they are now decided by a machine.
 
+## How are the team fitness computed?
+
+Given a team:
+
+* For each member of a team git it
+  - 3 points if the team's project was its 1st option
+  - 1 points if the team's project was its 2nd option
+  - 0 points if the team's project was its 3rd option
+* Accumulate the scores
+* Multiply by a bonus (defaults to 2) the team score
+  - if the team has a coach
+  - if the team if of a proper size (defaults to from 4 to 8)
+
+The chromosome score is given by the teams score sum.
+
 ## What is still missing
+
+* [ ] Input personal abilities data
+  -  [ ] Use this data to form equilibrate teams
 
 ## Requirements
 
