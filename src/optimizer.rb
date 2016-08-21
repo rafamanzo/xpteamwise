@@ -1,3 +1,5 @@
+require 'highline'
+
 require_relative 'optimizer/team'
 require_relative 'optimizer/chromossome'
 require_relative 'optimizer/population'
@@ -27,13 +29,23 @@ module XpTeamWise
 
           # This will not get tracked for coverage as the tests are not expected to iterate that much
           # :nocov:
-          if iterations == 1000
-            puts "\nIterated 1000 times!"
-            puts "Fittest score: #{fittest.score}"
+          if !all_bonus && iterations == 1000
+            cli = HighLine.new
+
+            cli.say "\nIterated 1000 times!"
+
+            cli.say "\nFittest score: #{fittest.score}"
             fittest.teams.each do |team|
-              puts "Could not find coach for #{team.project.name}" unless team.has_coach?
-              puts "Could not find proper size for #{team.project.name}" unless team.respect_sizes?(Ranker::MIN_SIZE, Ranker::MAX_SIZE)
+              cli.say "\tCould not find coach for #{team.project.name}" unless team.has_coach?
+              cli.say "\tCould not find proper size for #{team.project.name}" unless team.respect_sizes?(Ranker::MIN_SIZE, Ranker::MAX_SIZE)
             end
+
+            if cli.agree "\nDo you wish to erradicate this population? [y/n]"
+              population.reset!
+            else
+              continue = cli.agree "\nDo you wish to continue? [y/n]"
+            end
+
             iterations = 0
           end
           # :nocov:
