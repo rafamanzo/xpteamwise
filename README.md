@@ -70,7 +70,15 @@ It is expected in CSV format:
 
 ## Usage
 
-Place your CSV file at the root path and run:
+Place your CSV file at the root path and prepare Docker:
+
+```shell
+docker image build . -t xpteamwise
+
+docker container run -it xpteamwise
+```
+
+Inside the container, run: 
 
 ```shell
 rake xpteamwise:generate
