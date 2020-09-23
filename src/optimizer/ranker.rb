@@ -1,10 +1,11 @@
 module XpTeamWise
   module Optimizer
     class Ranker
-      FIRST_OPTION_PTS = 3
-      SECOND_OPTION_PTS = 1
-      THIRD_OPTION_PTS = 0
+      FIRST_OPTION_PTS = 8
+      SECOND_OPTION_PTS = 3
+      THIRD_OPTION_PTS = 1
 
+      BONUS_COACH = 20
       BONUS_MULTIPLIER = 2
 
       MIN_SIZE=4
@@ -36,7 +37,8 @@ module XpTeamWise
             end
           end
 
-          score *= BONUS_MULTIPLIER if team.has_coach?
+          score += BONUS_COACH / team.number_of_coaches if team.has_coach?
+
           score *= BONUS_MULTIPLIER if team.respect_sizes?(min_size, max_size)
 
           score
