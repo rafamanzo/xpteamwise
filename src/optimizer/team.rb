@@ -26,8 +26,12 @@ module XpTeamWise
         false
       end
 
+      def number_of_coaches
+        self.members.count { |member| member.coach }
+      end
+
       def respect_sizes?(min, max)
-        self.members.count <= max && self.members.count >= min
+        self.members.count <= max && self.members.count >= min && self.members.count % 2 == 0
       end
     end
   end
